@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>John's Portfolio</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        .project {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .project h3 {
+            margin-top: 0;
+        }
+
+        .review {
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f0f0f0;
+        }
+
+        /* CSS for animations */
+        .fade-in {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .fade-in.active {
+            opacity: 1;
+        }
+
+        /* You can add more animations as needed */
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>John's Portfolio</h1>
+    </header>
+
+    <div class="container">
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="project fade-in">
+                <h3>Project 1</h3>
+                <p>Description of Project 1</p>
+            </div>
+            <div class="project fade-in">
+                <h3>Project 2</h3>
+                <p>Description of Project 2</p>
+            </div>
+            <!-- Add more projects here -->
+        </section>
+
+        <section id="reviews">
+            <h2>Reviews</h2>
+            <div class="review fade-in">
+                <p>"Amazing work by John. Highly recommended!"</p>
+            </div>
+            <div class="review fade-in">
+                <p>"John exceeded all our expectations. Will definitely hire again."</p>
+            </div>
+            <!-- Add more reviews here -->
+        </section>
+    </div>
+
+    <script>
+        // JavaScript to add animation classes
+        document.addEventListener("DOMContentLoaded", function () {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            fadeElements.forEach(element => {
+                if (isElementInViewport(element)) {
+                    element.classList.add('active');
+                }
+            });
+            window.addEventListener('scroll', () => {
+                fadeElements.forEach(element => {
+                    if (isElementInViewport(element)) {
+                        element.classList.add('active');
+                    }
+                });
+            });
+
+            function isElementInViewport(el) {
+                const rect = el.getBoundingClientRect();
+                return (
+                    rect.top >= 0 &&
+                    rect.left >= 0 &&
+                    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+                    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+                );
+            }
+        });
+    </script>
+</body>
+
+</html>
